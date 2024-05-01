@@ -1,19 +1,28 @@
-import java.util.LinkedList;
 import java.util.*;
 
 public class Match {
-    HashMap<String, String> list;
-    Match() {
+    ArrayList<String> counterVariable;
+    ArrayList<String> counterRepeat;
+    ArrayList<String> counterChange;
+    Match(ArrayList<String> countVariable, ArrayList<String> counterRepeat, ArrayList<String> counterChange) {
+          this.counterVariable = countVariable;
+          this.counterRepeat = counterRepeat;
+          this.counterChange = counterChange;
     }
 
-    public LinkedList matcher(HashMap<String, String> list) {
-        // if (list.equals("String")) {
-        // } else if (list.getFirst().equals("int")) {
-        // } else if (list.getFirst().equals("float")) {
-        // } else {
-        //     throw new NullPointerException("Ugugduliin turul buruu bna");
-        // }
-        return int bna;
+    public void matcher() throws Exception{
+        if(counterVariable.size() == 3){
+        }else{
+            throw new Exception("Ugugdul dutuu esvel iluu oruulsan bna");
+        }
+        if(counterRepeat.size() == 3){
+        }else{
+            throw new Exception("Ugugdul dutuu esvel iluu oruulsan bna");
+        }
+        if(counterChange.size() == 3){
+        }else{
+            throw new Exception("Ugugdul dutuu esvel iluu oruulsan bna");
+        }
     }
 
 }

@@ -14,8 +14,11 @@ public class Lexer {
     ArrayList<String> operator = new ArrayList<String>();
     ArrayList<String> value = new ArrayList<String>();
     HashMap<String, String> expression = new HashMap<String, String>();
+    ArrayList<String> sortedCounterStartVariable = new ArrayList<String>();
+    ArrayList<String> sortedCounterChange = new ArrayList<String>();
+    ArrayList<String> sortedCounterRepeatCount = new ArrayList<String>();
 
-    public Token divideCheckCode() {
+    public void divideCheckCode(){
         boolean checkFor = inputLine.substring(0, 3).contains("for(");
         boolean checkSign = inputLine.substring(inputLine.length() - 1, inputLine.length()).contains(")");
         try {
@@ -26,12 +29,7 @@ public class Lexer {
                 String counterStartVariable = expression.put("Huvsagch", divideForString[0]);
                 String counterRepeatCount = expression.put("Davtaltduusah", divideForString[1]);
                 String counterChange = expression.put("ParameterUurchluh", divideForString[2]);
-                // Match match = new Match();
-                // match.matcher(expression);
                 int count = 0;
-                ArrayList<String> sortedCounterStartVariable = new ArrayList<String>();
-                ArrayList<String> sortedCounterChange = new ArrayList<String>();
-                ArrayList<String> sortedCounterRepeatCount = new ArrayList<String>();
 
                 ArrayList<String> numberArray = new ArrayList<String>();
                 ArrayList<String> idArray = new ArrayList<String>();
@@ -248,17 +246,17 @@ public class Lexer {
                 sortedCounterRepeatCount.add(idArray.get(2));
                 sortedCounterRepeatCount.add(numberArray.get(1));
                 sortedCounterRepeatCount.add(operationArray.get(3));
-                // hemjee bolon aguulagdaj bui utguudiig 
+                //hemjee bolon aguulagdaj bui utguudiig 
                 //shalgaj Match aldaag olno daraa n bolson bol 
                 //Token bolgoj shideed ter tokenuudiig 
                 //classuud barij avch udamshuulan For classiig
-                // toString bie bolgod tuuniig main hevlen gargana
-                return new Match(sortedCounterStartVariable, sortedCounterRepeatCount, sortedCounterChange);
+                //toString bie bolgod tuuniig main hevlen gargana
+                Match check = new Match(sortedCounterStartVariable, sortedCounterRepeatCount, sortedCounterChange);
+                check.matcher();
             }
         } catch (Exception e) {
             System.out.println("for() uusgelt buruu bna");
 
         }
-        return new Token(variable, operator, value);
     }
 }

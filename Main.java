@@ -5,5 +5,6 @@ public class Main {
         Scanner intLine = new Scanner(System.in);
         String input = intLine.nextLine();
         Lexer result = new Lexer(input);
+        result.matcher();
     }
 }
