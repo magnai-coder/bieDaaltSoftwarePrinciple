@@ -29,11 +29,6 @@ public class For {
     Expression counterChangePart = new Expression(variable3, operators, operators2);
     
     Assignment source = new Assignment(counterStartPart,counterRepeatPart,counterChangePart);
-    System.out.println(variable3);
-    System.out.println(counterStartPart);
-    System.out.println(source);
-
- 
      return "for"+ source;
     }
 }
