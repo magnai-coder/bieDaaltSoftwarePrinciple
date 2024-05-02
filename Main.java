@@ -5,6 +5,9 @@ public class Main {
         Scanner intLine = new Scanner(System.in);
         String input = intLine.nextLine();
         Lexer result = new Lexer(input);
+<<<<<<< HEAD
         result
+=======
+>>>>>>> 3934e8a03c71465207129d5d45744703cad27db0
     }
 }

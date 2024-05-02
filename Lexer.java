@@ -237,8 +237,6 @@ public class Lexer {
                             break;
                         }
                     }
-                 
-        
                 }
                 sortedCounterRepeatCount.add(idArray.get(2));
                 sortedCounterRepeatCount.add(numberArray.get(1));
@@ -256,4 +254,5 @@ public class Lexer {
 
         }
     }
+    return new For(sortedCounterStartVariable, sortedCounterRepeatCount, sortedCounterChange);
 }
