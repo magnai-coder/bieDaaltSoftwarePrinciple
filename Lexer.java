@@ -9,7 +9,6 @@ public class Lexer {
     Lexer(String inputLine) {
         this.inputLine = inputLine;
     }
-
     ArrayList<String> variable = new ArrayList<String>();
     ArrayList<String> operator = new ArrayList<String>();
     ArrayList<String> value = new ArrayList<String>();
@@ -107,8 +106,6 @@ public class Lexer {
                 sortedCounterStartVariable.add(idArray.get(0));
                 sortedCounterStartVariable.add(numberArray.get(0));
                 sortedCounterStartVariable.add(operationArray.get(0));
-
-
 
 
                 //i++
