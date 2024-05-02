@@ -1,13 +1,13 @@
 public class Assignment {
-    public Expression counterVariable;
-    public Expression counterRepeate;
-    public Expression counterChange;
-    public Assignment(Expression counterVariable, Expression counterRepeate, Expression counterChange){
-        this.counterVariable = counterVariable;
-        this.counterRepeate = counterRepeate;
-        this.counterChange = counterChange;
+    public Expression counter;
+    public Expression repeatPart;
+    public  Expression changePart;
+    public Assignment(Expression counter, Expression repeatPart, Expression changePart){
+        this.counter = counter;
+        this.repeatPart = repeatPart;
+        this.changePart = changePart;
     }
     public String toString(){
-        return counterVariable + ';' + counterRepeate + ';' + counterChange;
+        return "("+counter+";"+repeatPart+";"+changePart+")";
     }
 }

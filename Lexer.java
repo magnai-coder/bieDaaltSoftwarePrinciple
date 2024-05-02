@@ -1,6 +1,5 @@
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Lexer {
 
@@ -12,28 +11,27 @@ public class Lexer {
     ArrayList<String> variable = new ArrayList<String>();
     ArrayList<String> operator = new ArrayList<String>();
     ArrayList<String> value = new ArrayList<String>();
-    HashMap<String, String> expression = new HashMap<String, String>();
     ArrayList<String> sortedCounterStartVariable = new ArrayList<String>();
     ArrayList<String> sortedCounterChange = new ArrayList<String>();
     ArrayList<String> sortedCounterRepeatCount = new ArrayList<String>();
 
-    public void divideCheckCode(){
-        boolean checkFor = inputLine.substring(0, 3).contains("for(");
+    public For divideCheckCode(){
+        boolean checkFor = inputLine.substring(0, 4).contains("for(");
         boolean checkSign = inputLine.substring(inputLine.length() - 1, inputLine.length()).contains(")");
         try {
             if ((checkFor == true) && (checkSign == true)) {
                 inputLine = inputLine.replace("for(", "");
                 inputLine = inputLine.replace(")", "");
-                String[] divideForString = inputLine.split(";", 2);
-                String counterStartVariable = expression.put("Huvsagch", divideForString[0]);
-                String counterRepeatCount = expression.put("Davtaltduusah", divideForString[1]);
-                String counterChange = expression.put("ParameterUurchluh", divideForString[2]);
+                String[] divideForString = inputLine.split(";", 3);
+             
+                String counterStartVariable =  divideForString[0];
+                String counterRepeatCount = divideForString[1];
+                String counterChange =  divideForString[2];
                 int count = 0;
 
                 ArrayList<String> numberArray = new ArrayList<String>();
                 ArrayList<String> idArray = new ArrayList<String>();
                 ArrayList<String> operationArray = new ArrayList<String>();
-                ArrayList<String> scriptArray = new ArrayList<String>();
                 // i=0
                 while (count < counterStartVariable.length()) {
                     String id = "";
@@ -107,7 +105,7 @@ public class Lexer {
                 sortedCounterStartVariable.add(numberArray.get(0));
                 sortedCounterStartVariable.add(operationArray.get(0));
 
-
+                count = 0;
                 //i++
                 while (count < counterChange.length()) {
                     String id = "";
@@ -151,8 +149,8 @@ public class Lexer {
                         break;
                     }
                     
-                    String lineChar = String.valueOf(counterStartVariable.charAt(count));
-                    if (lineChar == "+" || lineChar == "-") {
+                    String lineChar = String.valueOf(counterChange.charAt(count));
+                    if (lineChar.equals("+") || lineChar.equals("-")) {
                         operationArray.add(lineChar);
                         if (count < counterRepeatCount.length()){
                             count += 1;
@@ -168,9 +166,9 @@ public class Lexer {
                 sortedCounterChange.add(operationArray.get(2));
 
 
-
+                 
                 //i<input
-
+                count=0;
                 while (count < counterRepeatCount.length()) {
                     String id = "";
                     while (count < counterRepeatCount.length()) {
@@ -228,8 +226,8 @@ public class Lexer {
                     if (count == counterRepeatCount.length()) {
                         break;
                     }
-                    String lineChar = String.valueOf(counterStartVariable.charAt(count));
-                    if (lineChar == "<" || lineChar == ">" || lineChar == "=>" || lineChar == "<=") {
+                    String lineChar = String.valueOf(counterRepeatCount.charAt(count));
+                    if (lineChar.equals("<") || lineChar.equals(">") || lineChar.equals("=>") || lineChar.equals("<=")) {
                         operationArray.add(lineChar);
                         if (count < counterChange.length()){
                             count += 1;
@@ -250,9 +248,9 @@ public class Lexer {
                 check.matcher();
             }
         } catch (Exception e) {
-            System.out.println("for() uusgelt buruu bna");
+            System.out.println("ugugduluu aldaatai oruulsan bna");
 
         }
+        return new For(sortedCounterStartVariable, sortedCounterRepeatCount, sortedCounterChange);
     }
-    return new For(sortedCounterStartVariable, sortedCounterRepeatCount, sortedCounterChange);
 }

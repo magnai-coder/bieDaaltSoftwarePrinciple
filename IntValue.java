@@ -5,6 +5,6 @@ public class IntValue extends Expression{
         this.val = val;
     }
     public String toString(){
-        return Strign.valuOf(val);
+        return String.valueOf(val);
     }
 }
