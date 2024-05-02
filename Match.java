@@ -1,27 +1,31 @@
 import java.util.*;
 
 public class Match {
-    ArrayList<String> counterVariable;
-    ArrayList<String> counterRepeat;
-    ArrayList<String> counterChange;
-    Match(ArrayList<String> countVariable, ArrayList<String> counterRepeat, ArrayList<String> counterChange) {
-          this.counterVariable = countVariable;
-          this.counterRepeat = counterRepeat;
-          this.counterChange = counterChange;
+    ArrayList<String> variable;
+    ArrayList<String> number;
+    ArrayList<String> operators;
+    Match(ArrayList<String> variable, ArrayList<String> number, ArrayList<String> operators) {
+          this.variable = variable;
+          this.number = number;
+          this.operators = operators;
     }
 
     public void matcher() throws Exception{
-        if(counterVariable.size() == 3){
+        if(variable.size() <= 3){
         }else{
-            throw new Exception("Ugugdul dutuu esvel iluu oruulsan bna");
+            throw new Exception("Ugugdul iluu oruulsan bna");
         }
-        if(counterRepeat.size() == 3){
+        if(number.size() <= 2){
         }else{
-            throw new Exception("Ugugdul dutuu esvel iluu oruulsan bna");
+            throw new Exception("Ugugdul iluu oruulsan bna");
         }
-        if(counterChange.size() == 3){
+        if(operators.size() <= 4){
         }else{
-            throw new Exception("Ugugdul dutuu esvel iluu oruulsan bna");
+            throw new Exception("Ugugdul iluu oruulsan bna");
+        }
+        if(Integer.valueOf(number.get(0))<Integer.valueOf(number.get(1))){
+        }else{
+            throw new Exception("for davtaltiin ehleh utga buruu bna");
         }
     }
 

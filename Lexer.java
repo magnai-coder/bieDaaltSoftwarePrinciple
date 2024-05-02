@@ -15,26 +15,27 @@ public class Lexer {
     ArrayList<String> sortedCounterChange = new ArrayList<String>();
     ArrayList<String> sortedCounterRepeatCount = new ArrayList<String>();
 
-    public For divideCheckCode(){
+    public For divideCheckCode() throws Exception{
+        ArrayList<String> numberArray = new ArrayList<String>();
+        ArrayList<String> idArray = new ArrayList<String>();
+        ArrayList<String> operationArray = new ArrayList<String>();
         boolean checkFor = inputLine.substring(0, 4).contains("for(");
         boolean checkSign = inputLine.substring(inputLine.length() - 1, inputLine.length()).contains(")");
-        try {
             if ((checkFor == true) && (checkSign == true)) {
-                inputLine = inputLine.replace("for(", "");
-                inputLine = inputLine.replace(")", "");
-                String[] divideForString = inputLine.split(";", 3);
-             
-                String counterStartVariable =  divideForString[0];
-                String counterRepeatCount = divideForString[1];
-                String counterChange =  divideForString[2];
-                int count = 0;
+                try{
 
-                ArrayList<String> numberArray = new ArrayList<String>();
-                ArrayList<String> idArray = new ArrayList<String>();
-                ArrayList<String> operationArray = new ArrayList<String>();
-                // i=0
-                while (count < counterStartVariable.length()) {
-                    String id = "";
+                    inputLine = inputLine.replace("for(", "");
+                    inputLine = inputLine.replace(")", "");
+                    String[] divideForString = inputLine.split(";", 3);
+             
+                    String counterStartVariable =  divideForString[0];
+                    String counterRepeatCount = divideForString[1];
+                    String counterChange =  divideForString[2];
+                    int count = 0;
+
+                    // i=0
+                    while (count < counterStartVariable.length()) {
+                        String id = "";
                     while (count < counterStartVariable.length()) {
                         if (Character.isLetter(counterStartVariable.charAt(count))) {
                             id += counterStartVariable.charAt(count);
@@ -164,9 +165,9 @@ public class Lexer {
                 sortedCounterChange.add(idArray.get(1));
                 sortedCounterChange.add(operationArray.get(1));
                 sortedCounterChange.add(operationArray.get(2));
+                
 
-
-                 
+                
                 //i<input
                 count=0;
                 while (count < counterRepeatCount.length()) {
@@ -208,7 +209,7 @@ public class Lexer {
                             if (!num.equals("")) {
                                 numberArray.add(num);
                             }
-                                break;
+                            break;
                             
                         }
                     }
@@ -244,13 +245,14 @@ public class Lexer {
                 //Token bolgoj shideed ter tokenuudiig 
                 //classuud barij avch udamshuulan For classiig
                 //toString bie bolgod tuuniig main hevlen gargana
-                Match check = new Match(sortedCounterStartVariable, sortedCounterRepeatCount, sortedCounterChange);
-                check.matcher();
+            }catch(Exception e){
+                System.out.println("Ugugdul dutuu oruulsan bna");
             }
-        } catch (Exception e) {
-            System.out.println("ugugduluu aldaatai oruulsan bna");
-
-        }
+                Match check = new Match(idArray, numberArray, operationArray);
+                check.matcher();
+            }else{
+                throw new Exception("For() buruu bichigdsen bna");
+            }
         return new For(sortedCounterStartVariable, sortedCounterRepeatCount, sortedCounterChange);
     }
 }
