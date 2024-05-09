@@ -32,9 +32,11 @@ public class Lexer {
                     String counterRepeatCount = divideForString[1];
                     String counterChange =  divideForString[2];
                     int count = 0;
+                    int cycle =0;
 
                     // i=0
                     while (count < counterStartVariable.length()) {
+                        
                         String id = "";
                     while (count < counterStartVariable.length()) {
                         if (Character.isLetter(counterStartVariable.charAt(count))) {
@@ -100,13 +102,18 @@ public class Lexer {
                             break;
                         }
                     }
-
+                cycle++;
+                if(cycle>3){
+                    break;
+                }
+                 
                 }
                 sortedCounterStartVariable.add(idArray.get(0));
                 sortedCounterStartVariable.add(numberArray.get(0));
                 sortedCounterStartVariable.add(operationArray.get(0));
-
+               
                 count = 0;
+                cycle=0;
                 //i++
                 while (count < counterChange.length()) {
                     String id = "";
@@ -160,15 +167,18 @@ public class Lexer {
                         }
                     }
                    
-        
+                    cycle++;
+                    if(cycle>3){
+                        break;
+                    }
                 }
                 sortedCounterChange.add(idArray.get(1));
                 sortedCounterChange.add(operationArray.get(1));
                 sortedCounterChange.add(operationArray.get(2));
                 
 
-                
                 //i<input
+                cycle=0;
                 count=0;
                 while (count < counterRepeatCount.length()) {
                     String id = "";
@@ -236,6 +246,10 @@ public class Lexer {
                             break;
                         }
                     }
+                    cycle++;
+                    if(cycle>3){
+                        break;
+                    }
                 }
                 sortedCounterRepeatCount.add(idArray.get(2));
                 sortedCounterRepeatCount.add(numberArray.get(1));
@@ -246,14 +260,11 @@ public class Lexer {
                 //classuud barij avch udamshuulan For classiig
                 //toString bie bolgod tuuniig main hevlen gargana
             }catch(Exception e){
-                System.out.println("Ugugdul dutuu oruulsan bna");
+                System.out.println("Ugugdul buruu oruulsan bna");
             }
-            if(idArray.size()<3 || numberArray.size()<2 || operationArray.size()<4){
-
-            }else{
                 Match check = new Match(idArray, numberArray, operationArray);
                 check.matcher();
-            }
+            
             }else{
                 throw new Exception("For() buruu bichigdsen bna");
             }
