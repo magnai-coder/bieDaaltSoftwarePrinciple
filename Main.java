@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) throws Exception{
         //Гаднаас for(x=3;x<5;x++) өгөгдөл орно
+        System.out.println("ajillaj bna");
             Scanner intLine = new Scanner(System.in);
             String input = intLine.nextLine();
             Lexer checkIt = new Lexer(input);

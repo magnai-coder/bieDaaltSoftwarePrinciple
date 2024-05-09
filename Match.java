@@ -27,7 +27,7 @@ public class Match {
         }else{
             throw new Exception("for davtaltiin ehleh utga buruu bna");
         }
-        if(variable.get(0) == variable.get(1) && variable.get(1) == variable.get(2)){
+        if(variable.get(0).equals(variable.get(1)) && variable.get(1).equals(variable.get(2))){
         }else{
             throw new Exception("Huvsagchidiin nerlelt uur bna");
         }
