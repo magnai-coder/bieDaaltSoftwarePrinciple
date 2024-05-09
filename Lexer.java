@@ -248,8 +248,12 @@ public class Lexer {
             }catch(Exception e){
                 System.out.println("Ugugdul dutuu oruulsan bna");
             }
+            if(idArray.size()<3 || numberArray.size()<2 || operationArray.size()<4){
+
+            }else{
                 Match check = new Match(idArray, numberArray, operationArray);
                 check.matcher();
+            }
             }else{
                 throw new Exception("For() buruu bichigdsen bna");
             }
